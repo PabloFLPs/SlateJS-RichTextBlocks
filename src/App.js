@@ -1,23 +1,95 @@
 import './App.css';
 
+/*
+// Import React dependencies.
+import React, { useState } from 'react'
+// Import the Slate editor factory.
+import { createEditor } from 'slate'
+// Import the Slate components and React plugin.
+import { Slate, withReact } from 'slate-react'
+*/
+
+import RichText from "./components/blocks/RichTextBlock"
+
 function App() {
+  /*
+  // Create a Slate editor object that won't change across renders.
+  const [editor] = useState(() => withReact(createEditor()))
+
+  const initialValue = [
+    {
+      type: 'paragraph',
+      children: [
+        { text: 'This is editable ' },
+        { text: 'rich', bold: true },
+        { text: ' text, ' },
+        { text: 'much', italic: true },
+        { text: ' better than a ' },
+        { text: '<textarea>', code: true },
+        { text: '!' },
+      ],
+    },
+    {
+      type: 'paragraph',
+      children: [
+        { text: "Since it's rich text, you can do things like turn a selection of text " },
+        { text: 'bold', bold: true },
+        { text: ', or add a semantically rendered block quote in the middle of the page, like this:' },
+      ],
+    },
+    {
+      type: 'block-quote',
+      children: [
+        { text: 'A wise quote.' }
+      ],
+    },
+    {
+      type: 'paragraph',
+      align: 'center',
+      children: [
+        { text: 'Try it out for yourself!' }
+      ],
+    },
+  ]
+
+  // Keep track of state for the value of the editor.
+  const [value, setValue] = useState(initialValue)
+  */
+
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="Container">
+        {/*
+        <Slate
+          editor={editor}
+          value={value}
+          onChange={newValue => setValue(newValue)}
+        />
+        */}
+        <RichText/>
+      </div>
     </div>
   );
 }
+
+/*
+<Editable 
+  className="Editor"
+  renderElement={renderElement}
+  renderLeaf={renderLeaf}
+  placeholder="Enter some rich text…"
+  spellCheck
+  autoFocus
+  onKeyDown={event => {
+    for (const hotkey in HOTKEYS) {
+      if (isHotkey(hotkey, event)) {
+        event.preventDefault()
+        const mark = HOTKEYS[hotkey]
+        toggleMark(editor, mark)
+      }
+    }
+  }}
+/>
+*/
 
 export default App;
