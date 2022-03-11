@@ -12,7 +12,7 @@ import {
 } from 'slate'
 import { withHistory } from 'slate-history'
 
-import { Button, Icon, Toolbar } from '../Components'
+import { Button, Icon, Toolbar } from '../Components.js'
 
 const HOTKEYS = {
   'mod+b': 'bold',

@@ -2,7 +2,7 @@ import React, { Ref, PropsWithChildren } from 'react'
 import ReactDOM from 'react-dom'
 import { cx, css } from '@emotion/css'
 
-export const Button = React.forwardRef(
+const Button = React.forwardRef(
   (
     {
       className,
@@ -85,7 +85,7 @@ export const EditorValue = React.forwardRef(
   }
 )
 
-export const Icon = React.forwardRef(
+const Icon = React.forwardRef(
   (
     { className, ...props },
     ref
@@ -155,7 +155,7 @@ export const Portal = ({ children }) => {
     : null
 }
 
-export const Toolbar = React.forwardRef(
+const Toolbar = React.forwardRef(
   (
     { className, ...props },
     ref
@@ -175,3 +175,5 @@ export const Toolbar = React.forwardRef(
     />
   )
 )
+
+export { Button, Icon, Toolbar }
