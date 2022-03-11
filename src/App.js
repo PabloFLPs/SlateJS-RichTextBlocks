@@ -1,4 +1,4 @@
-import './App.css';
+import './App.css'
 
 /*
 // Import React dependencies.
@@ -9,7 +9,10 @@ import { createEditor } from 'slate'
 import { Slate, withReact } from 'slate-react'
 */
 
-import RichText from "./components/blocks/RichTextBlock"
+import React, { useState } from 'react'
+
+import { Button } from '../src/components/Button.js'
+import { BlockTextList } from '../src/components/BlockTextList.js'
 
 function App() {
   /*
@@ -56,6 +59,13 @@ function App() {
   const [value, setValue] = useState(initialValue)
   */
 
+  const [components, setComponents] = useState(["Text Block Component"])
+  
+  function addComponent() {
+    setComponents([...components, "Text Block Component"]) 
+  } 
+
+
   return (
     <div className="App">
       <div className="Container">
@@ -66,10 +76,15 @@ function App() {
           onChange={newValue => setValue(newValue)}
         />
         */}
-        <RichText/>
+        <Button onClick={addComponent}/>
+        {components.map(
+          (item, index) => (
+            <BlockTextList text={item}/>
+          )
+        )}
       </div>
     </div>
-  );
+  )
 }
 
 /*
@@ -92,4 +107,4 @@ function App() {
 />
 */
 
-export default App;
+export default App
