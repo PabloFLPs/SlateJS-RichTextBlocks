@@ -241,6 +241,11 @@ const MarkButton = ({ format, icon }) => {
 
 const initialValue = [
   {
+    type: 'heading-two',
+    align: 'center',
+    children: [{ text: 'SlateJS - Rich Text Blocks' }]
+  },
+  {
     type: 'paragraph',
     children: [
       { text: 'This is editable ' },
@@ -255,15 +260,9 @@ const initialValue = [
   {
     type: 'paragraph',
     children: [
-      {
-        text:
-          "Since it's rich text, you can do things like turn a selection of text ",
-      },
+      { text: "Since it's rich text, you can do things like turn a selection of text "},
       { text: 'bold', bold: true },
-      {
-        text:
-          ', or add a semantically rendered block quote in the middle of the page, like this:',
-      },
+      { text: ', or add a semantically rendered block quote in the middle of the page, like this:' },
     ],
   },
   {
