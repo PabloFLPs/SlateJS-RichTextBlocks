@@ -14,6 +14,8 @@ import React, { useState } from 'react'
 import { Button } from '../src/components/Button.js'
 import { BlockTextList } from '../src/components/BlockTextList.js'
 
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
+
 function App() {
   /*
   // Create a Slate editor object that won't change across renders.
@@ -68,21 +70,34 @@ function App() {
 
   return (
     <div className="App">
-      <div className="Container">
-        {/*
-        <Slate
-          editor={editor}
-          value={value}
-          onChange={newValue => setValue(newValue)}
-        />
-        */}
-        <Button onClick={addComponent}/>
-        {components.map(
-          (item, index) => (
-            <BlockTextList text={item}/>
-          )
-        )}
-      </div>
+      <DragDropContext>
+        <Droppable droppableId="containers">
+          {(provided) => (
+            <div className="Container" {...provided.droppableProps} ref={provided.innerRef}>
+              {/*
+              <Slate
+                editor={editor}
+                value={value}
+                onChange={newValue => setValue(newValue)}
+              />
+              */}
+              <Button onClick={addComponent}/>
+              {components.map(
+                (item, index) => (
+                  <Draggable key={index} draggableId={`${index}`} index={index}>
+                    {(provided) => (
+                      <div className="ref-container" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                        <BlockTextList text={item}/>
+                      </div>
+                    )}
+                  </Draggable>
+                )
+              )}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
     </div>
   )
 }
